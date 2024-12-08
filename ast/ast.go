@@ -1362,7 +1362,7 @@ func (n *MappingValueNode) toString() string {
 	valueIndentLevel := n.Value.GetToken().Position.IndentLevel
 	keyComment := n.Key.GetComment()
 	if _, ok := n.Value.(ScalarNode); ok {
-		return fmt.Sprintf("%s%s: \"%s\"", space, n.Key.String(), n.Value.String())
+		return fmt.Sprintf("%s%s: %s", space, n.Key.String(), fmt.Sprintf("+%s+", n.Value.String()))
 	} else if keyIndentLevel < valueIndentLevel {
 		if keyComment != nil {
 			return fmt.Sprintf(
